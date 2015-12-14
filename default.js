@@ -36,5 +36,5 @@ xhr.onload = function() {
   document.getElementById('md7').textContent = response.conferences[0].divisions[1].teams[6].name;
   document.getElementById('md8').textContent = response.conferences[0].divisions[0].teams[7].name;
 };
-xhr.open('GET', 'http://127.0.0.1:8080/rankings', true);
+xhr.open('GET', 'http://127.0.0.1:8080/standings', true);
 xhr.send();
