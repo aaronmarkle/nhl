@@ -13,8 +13,7 @@ app.get('/default.js', function(req, res) {
 app.get('/rankings', function(req, res) {
   var rankings;
   fs.readFile('rankingsSample.json', 'utf8', function(err, data) {
-    rankings = JSON.stringify(data);
-    res.send(rankings);
+    res.send(data);
   });
 });
 
