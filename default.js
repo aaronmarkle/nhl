@@ -29,8 +29,12 @@ getStandings.send();
 function listTeams(division) {
   for (var i=0; i<division.teams.length; i++) {
     var newNode = document.createTextNode(division.teams[i].name);
-    var newEle = document.createElement('p');
-    newEle.appendChild(newNode);
-    document.getElementById(division.name).appendChild(newEle);
+    var newEleP = document.createElement('p');
+    var newEleA = document.createElement('a');
+    newEleA.setAttribute('href', '/roster.html');
+    newEleA.appendChild(newNode);
+    newEleP.appendChild(newEleA);
+    newEleP.setAttribute('data-team', division.teams[i].id);
+    document.getElementById(division.name).appendChild(newEleP);
   }
 }
