@@ -49,10 +49,11 @@ function listPlayers(teamId) {
   var getTeamProfile = new XMLHttpRequest();
   getTeamProfile.onload = function() {
     response = JSON.parse(getTeamProfile.responseText);
-    console.log(response);
+    document.getElementById('teamName').textContent = response.market + ' ' + response.name;
     for (var i=0; i<response.players.length; i++) {
     var newNode = document.createTextNode(response.players[i].full_name);
     var newEle = document.createElement('p');
+    newEle.setAttribute('class', 'h4');
     newEle.appendChild(newNode);
     document.getElementById('teamProfile').appendChild(newEle);
     }
