@@ -1,7 +1,6 @@
 var express = require('express');
 var teamProfile = express.Router();
 var request = require('request');
-var path = require('path');
 
 teamProfile.use('/', function(req, res) {
   var keyword = req.query.teamId;

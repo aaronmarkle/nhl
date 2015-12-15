@@ -30,22 +30,26 @@ function listTeams(division) {
   for (var i=0; i<division.teams.length; i++) {
     var newNode = document.createTextNode(division.teams[i].name);
     var newEleP = document.createElement('p');
-    newEleP.appendChild(newNode);
-    newEleP.setAttribute('data-team', division.teams[i].id);
+    var newEleBtn = document.createElement('button');
+    newEleBtn.appendChild(newNode);
+    newEleP.appendChild(newEleBtn);
+    newEleBtn.setAttribute('data-team', division.teams[i].id);
     document.getElementById(division.name).appendChild(newEleP);
-    newEleP.addEventListener('click', function(e) {
-      console.log(e.target.getAttribute('data-team'));
+    newEleBtn.addEventListener('click', function(e) {
       listPlayers(e.target.getAttribute('data-team'));
     }, false);
   }
 }
 
 function listPlayers(teamId) {
+  var teamProfile = document.getElementById('teamProfile');
+  while (teamProfile.firstChild) {
+    teamProfile.removeChild(teamProfile.firstChild);
+  }
   var getTeamProfile = new XMLHttpRequest();
   getTeamProfile.onload = function() {
     response = JSON.parse(getTeamProfile.responseText);
     console.log(response);
-    listPlayers();
     for (var i=0; i<response.players.length; i++) {
     var newNode = document.createTextNode(response.players[i].full_name);
     var newEle = document.createElement('p');
