@@ -30,11 +30,29 @@ function listTeams(division) {
   for (var i=0; i<division.teams.length; i++) {
     var newNode = document.createTextNode(division.teams[i].name);
     var newEleP = document.createElement('p');
-    var newEleA = document.createElement('a');
-    newEleA.setAttribute('href', '/roster.html');
-    newEleA.appendChild(newNode);
-    newEleP.appendChild(newEleA);
+    newEleP.appendChild(newNode);
     newEleP.setAttribute('data-team', division.teams[i].id);
     document.getElementById(division.name).appendChild(newEleP);
+    newEleP.addEventListener('click', function(e) {
+      console.log(e.target.getAttribute('data-team'));
+      listPlayers(e.target.getAttribute('data-team'));
+    }, false);
   }
+}
+
+function listPlayers(teamId) {
+  var getTeamProfile = new XMLHttpRequest();
+  getTeamProfile.onload = function() {
+    response = JSON.parse(getTeamProfile.responseText);
+    console.log(response);
+    listPlayers();
+    for (var i=0; i<response.players.length; i++) {
+    var newNode = document.createTextNode(response.players[i].full_name);
+    var newEle = document.createElement('p');
+    newEle.appendChild(newNode);
+    document.getElementById('teamProfile').appendChild(newEle);
+    }
+  }
+  getTeamProfile.open('GET', 'http://127.0.0.1:8080/teamProfile?teamId=' + teamId, true);
+  getTeamProfile.send();
 }
