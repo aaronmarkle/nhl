@@ -49,13 +49,17 @@ function listPlayers(teamId) {
   var getTeamProfile = new XMLHttpRequest();
   getTeamProfile.onload = function() {
     response = JSON.parse(getTeamProfile.responseText);
-    document.getElementById('teamName').textContent = response.market + ' ' + response.name;
+    var newNode = document.createTextNode(response.market + ' ' + response.name);
+    var newEle = document.createElement('p');
+    newEle.setAttribute('class', 'h1');
+    newEle.appendChild(newNode);
+    teamProfile.appendChild(newEle);
     for (var i=0; i<response.players.length; i++) {
     var newNode = document.createTextNode(response.players[i].full_name);
     var newEle = document.createElement('p');
     newEle.setAttribute('class', 'h4');
     newEle.appendChild(newNode);
-    document.getElementById('teamProfile').appendChild(newEle);
+    teamProfile.appendChild(newEle);
     }
   }
   getTeamProfile.open('GET', 'http://127.0.0.1:8080/teamProfile?teamId=' + teamId, true);
