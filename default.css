@@ -1,5 +1,10 @@
+html {
+  height: 100%;
+}
+
 body {
-  background-color: #d1d3d3;
+  background: linear-gradient(#111, #eee);
+  background-repeat: no-repeat;
 }
 
 a {
@@ -10,8 +15,13 @@ a {
   background-color: #fff;
   border-radius: 5px;
   padding: 1px 10px 5px 10px;
+  margin: 20px 5px;
 }
 
 th {
   padding: 8px;
+}
+
+.h1 {
+  color: #fff;
 }
