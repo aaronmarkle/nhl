@@ -13,8 +13,6 @@ getRankings.onload = function() {
   //metropolitan
   var metropolitan = response.conferences[0].divisions[1];
   listTeams(metropolitan);
-//  md8.textContent = response.conferences[0].divisions[1].teams[7].name;
-//  md8.setAttribute("data-team", response.conferences[0].divisions[1].teams[7].id);
 };
 getRankings.open('GET', 'http://127.0.0.1:8080/rankings', true);
 getRankings.send();
@@ -22,16 +20,29 @@ getRankings.send();
 var getStandings = new XMLHttpRequest();
 getStandings.onload = function() {
   response = JSON.parse(getStandings.responseText);
-  console.log(response);
+  //pacific
+  var pacific = response.conferences[1].divisions[1];
+  listStandings(pacific);
+  //central
+  var central = response.conferences[1].divisions[0];
+  listStandings(central);
+  //atlantic
+  var atlantic = response.conferences[0].divisions[0];
+  listStandings(atlantic);
+  //metropolitan
+  var metropolitan = response.conferences[0].divisions[1];
+  listStandings(metropolitan);
 }
 getStandings.open('GET', 'http://127.0.0.1:8080/standings', true);
 getStandings.send();
 
 function listTeams(division) {
   var table = document.createElement('table');
+  table.setAttribute('class', 'table');
   document.getElementById(division.name).appendChild(table);
   for (var i=0; i<division.teams.length; i++) {
     var tr = document.createElement('tr');
+    tr.setAttribute('id', division.teams[i].id);
     table.appendChild(tr);
     var newNode = document.createTextNode(division.teams[i].name);
     var newEleTd = document.createElement('td');
@@ -47,7 +58,18 @@ function listTeams(division) {
 }
 
 function listStandings(division) {
+  for (var i=0; i<division.teams.length; i++) {
+    var teamRow = document.getElementById(division.teams[i].id)
+    var winsNode = document.createTextNode(division.teams[i].wins);
+    var winsTd = document.createElement('td');
+    winsTd.appendChild(winsNode);
+    teamRow.appendChild(winsTd);
 
+    var lossesNode = document.createTextNode(division.teams[i].losses);
+    var lossesTd = document.createElement('td');
+    lossesTd.appendChild(lossesNode);
+    teamRow.appendChild(lossesTd);
+  }
 }
 
 function listPlayers(teamId) {
