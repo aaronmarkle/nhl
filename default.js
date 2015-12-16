@@ -61,8 +61,6 @@ function listPlayers(teamId) {
       newEle.appendChild(newNode);
       teamProfile.appendChild(newEle);
     }*/
-
-
     var table = document.createElement('table');
     teamProfile.appendChild(table);
     for (var i=0; i<response.players.length; i++) {
@@ -73,14 +71,7 @@ function listPlayers(teamId) {
       name.appendChild(nameNode);
       tr.appendChild(name);
     }
-
-
-
   }
   getTeamProfile.open('GET', 'http://127.0.0.1:8080/teamProfile?teamId=' + teamId, true);
   getTeamProfile.send();
 }
-
-/*function createDOM(node, element) {
-  var
-}*/
