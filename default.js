@@ -22,23 +22,32 @@ getRankings.send();
 var getStandings = new XMLHttpRequest();
 getStandings.onload = function() {
   response = JSON.parse(getStandings.responseText);
+  console.log(response);
 }
 getStandings.open('GET', 'http://127.0.0.1:8080/standings', true);
 getStandings.send();
 
 function listTeams(division) {
+  var table = document.createElement('table');
+  document.getElementById(division.name).appendChild(table);
   for (var i=0; i<division.teams.length; i++) {
+    var tr = document.createElement('tr');
+    table.appendChild(tr);
     var newNode = document.createTextNode(division.teams[i].name);
-    var newEleP = document.createElement('p');
-    var newEleBtn = document.createElement('button');
-    newEleBtn.appendChild(newNode);
-    newEleP.appendChild(newEleBtn);
-    newEleBtn.setAttribute('data-team', division.teams[i].id);
-    document.getElementById(division.name).appendChild(newEleP);
-    newEleBtn.addEventListener('click', function(e) {
+    var newEleTd = document.createElement('td');
+    var newEleA = document.createElement('a');
+    tr.appendChild(newEleTd);
+    newEleA.appendChild(newNode);
+    newEleTd.appendChild(newEleA);
+    newEleA.setAttribute('data-team', division.teams[i].id);
+    newEleA.addEventListener('click', function(e) {
       listPlayers(e.target.getAttribute('data-team'));
     }, false);
   }
+}
+
+function listStandings(division) {
+
 }
 
 function listPlayers(teamId) {

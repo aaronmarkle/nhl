@@ -1,0 +1,13 @@
+body {
+  background-color: #d1d3d3;
+}
+
+a {
+  cursor: pointer;
+}
+
+.division {
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 1px 10px 5px 10px;
+}
