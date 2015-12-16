@@ -13,6 +13,8 @@ getRankings.onload = function() {
   //metropolitan
   var metropolitan = response.conferences[0].divisions[1];
   listTeams(metropolitan);
+
+  getStandings.send();
 };
 getRankings.open('GET', 'http://127.0.0.1:8080/rankings', true);
 getRankings.send();
@@ -20,6 +22,7 @@ getRankings.send();
 var getStandings = new XMLHttpRequest();
 getStandings.onload = function() {
   response = JSON.parse(getStandings.responseText);
+  console.log(response);
   //pacific
   var pacific = response.conferences[1].divisions[1];
   listStandings(pacific);
@@ -34,12 +37,11 @@ getStandings.onload = function() {
   listStandings(metropolitan);
 }
 getStandings.open('GET', 'http://127.0.0.1:8080/standings', true);
-getStandings.send();
 
 function listTeams(division) {
   //create rankings table and table-header
   var table = document.createElement('table');
-  table.setAttribute('class', 'table');
+  table.setAttribute('class', 'table table-striped');
   var thead = document.createElement('thead');
   var theadrow = document.createElement('tr');
   var thName = document.createElement('th');
@@ -63,12 +65,14 @@ function listTeams(division) {
   thTotal.appendChild(totalNode);
   thead.appendChild(thTotal);
   table.appendChild(thead);
+  var tbody = document.createElement('tbody');
+  table.appendChild(tbody);
   //create each row and give team-id attribute
   document.getElementById(division.name).appendChild(table);
   for (var i=0; i<division.teams.length; i++) {
     var tr = document.createElement('tr');
     tr.setAttribute('id', division.teams[i].id);
-    table.appendChild(tr);
+    tbody.appendChild(tr);
     var newNode = document.createTextNode(division.teams[i].name);
     var newEleTd = document.createElement('td');
     var newEleA = document.createElement('a');
