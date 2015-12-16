@@ -9,6 +9,11 @@ body {
 
 a {
   cursor: pointer;
+  color: black;
+}
+
+a:hover {
+  text-decoration: none;
 }
 
 .division {
@@ -24,4 +29,10 @@ th {
 
 .h1 {
   color: #fff;
+}
+
+@media (min-width: 1300px) {
+  .container {
+    width: 1270px;
+  }
 }
