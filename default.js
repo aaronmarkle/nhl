@@ -95,6 +95,7 @@ function listPlayers(teamId) {
     table.appendChild(tbody);
     for (var i=0; i<response.players.length; i++) {
       var tr = document.createElement('tr');
+      tr.setAttribute('id', response.players[i].id);
       tbody.appendChild(tr);
       createTableData(response.players[i].status, 'td', tr);
       createTableData(response.players[i].full_name, 'td', tr);
@@ -103,6 +104,9 @@ function listPlayers(teamId) {
       createTableData(response.players[i].weight, 'td', tr);
       createTableData(response.players[i].height, 'td', tr);
       createTableData(response.players[i].birth_place, 'td', tr);
+      tr.addEventListener('click', function(e) {
+        console.log(e.target.parentElement.getAttribute('id'));
+      }, true);
     }
   }
   getTeamProfile.open('GET', 'http://127.0.0.1:8080/teamProfile?teamId=' + teamId, true);
