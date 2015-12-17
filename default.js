@@ -101,9 +101,6 @@ function listStandings(division) {
     teamRow.appendChild(pointsTd);
   }
 }
-
-
-
 function listPlayers(teamId) {
   var teamProfile = document.getElementById('teamProfile');
   while (teamProfile.firstChild) {
@@ -117,65 +114,36 @@ function listPlayers(teamId) {
     newEle.setAttribute('class', 'h1');
     newEle.appendChild(newNode);
     teamProfile.appendChild(newEle);
-    function createTableData(property, element) {
+    function createTableData(property, element, parent) {
       var node = document.createTextNode(property);
       var td = document.createElement(element);
       td.appendChild(node);
-      tr.appendChild(td);
+      parent.appendChild(td);
     }
     var table = document.createElement('table');
     table.setAttribute('class', 'table');
     teamProfile.appendChild(table);
-
     var thead = document.createElement('thead');
-    var theadrow = document.createElement('tr');
-
-    
-    var thName = document.createElement('th');
-    var thNode = document.createTextNode('Status');
-    thName.appendChild(thNode);
-    thead.appendChild(thName);
-    var thWins = document.createElement('th');
-    var winsNode = document.createTextNode('Player');
-    thWins.appendChild(winsNode);
-    thead.appendChild(thWins);
-    var thLosses = document.createElement('th');
-    var lossesNode = document.createTextNode('Position');
-    thLosses.appendChild(lossesNode);
-    thead.appendChild(thLosses);
-    var thOtl = document.createElement('th');
-    var otlNode = document.createTextNode('Number');
-    thOtl.appendChild(otlNode);
-    thead.appendChild(thOtl);
-    var thTotal = document.createElement('th');
-    var totalNode = document.createTextNode('Weight');
-    thTotal.appendChild(totalNode);
-    thead.appendChild(thTotal);
-    var thTotal = document.createElement('th');
-    var totalNode = document.createTextNode('Height');
-    thTotal.appendChild(totalNode);
-    thead.appendChild(thTotal);
-    var thTotal = document.createElement('th');
-    var totalNode = document.createTextNode('Birthplace');
-    thTotal.appendChild(totalNode);
-    thead.appendChild(thTotal);
-
+    createTableData('Status', 'th', thead);
+    createTableData('Player', 'th', thead);
+    createTableData('Position', 'th', thead);
+    createTableData('Number', 'th', thead);
+    createTableData('Weight', 'th', thead);
+    createTableData('Height', 'th', thead);
+    createTableData('Birthplace', 'th', thead);
     table.appendChild(thead);
     var tbody = document.createElement('tbody');
     table.appendChild(tbody);
-
-
-
     for (var i=0; i<response.players.length; i++) {
       var tr = document.createElement('tr');
       tbody.appendChild(tr);
-      createTableData(response.players[i].status, 'td');
-      createTableData(response.players[i].full_name, 'td');
-      createTableData(response.players[i].primary_position, 'td');
-      createTableData(response.players[i].jersey_number, 'td');
-      createTableData(response.players[i].weight, 'td');
-      createTableData(response.players[i].height, 'td');
-      createTableData(response.players[i].birth_place, 'td');
+      createTableData(response.players[i].status, 'td', tr);
+      createTableData(response.players[i].full_name, 'td', tr);
+      createTableData(response.players[i].primary_position, 'td', tr);
+      createTableData(response.players[i].jersey_number, 'td', tr);
+      createTableData(response.players[i].weight, 'td', tr);
+      createTableData(response.players[i].height, 'td', tr);
+      createTableData(response.players[i].birth_place, 'td', tr);
     }
   }
   getTeamProfile.open('GET', 'http://127.0.0.1:8080/teamProfile?teamId=' + teamId, true);
