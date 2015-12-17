@@ -23,8 +23,8 @@ app.get('/default.css', function(req, res) {
   res.sendFile(__dirname + '/default.css');
 });
 
-app.get('/hockeybg.jpg', function(req, res) {
-  res.sendFile(__dirname + '/hockeybg.jpg');
+app.get('/hockeybg.png', function(req, res) {
+  res.sendFile(__dirname + '/hockeybg.png');
 });
 
 app.get('/rankings', function(req, res) {
