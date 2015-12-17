@@ -7,14 +7,8 @@ body {
   background-repeat: no-repeat;
 }
 
-a {
+tr:hover {
   cursor: pointer;
-  color: #111;
-}
-
-a:hover {
-  color: #111;
-  text-decoration: none;
 }
 
 #background {

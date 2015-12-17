@@ -31,7 +31,7 @@ getStandings.send();
 function listTeams(division) {
   //create rankings table and table-header
   var table = document.createElement('table');
-  table.setAttribute('class', 'table');
+  table.setAttribute('class', 'table table-hover');
   var thead = document.createElement('thead');
   var theadrow = document.createElement('tr');
   createTableData('Team', 'th', thead)
@@ -50,12 +50,9 @@ function listTeams(division) {
     tbody.appendChild(tr);
     var newNode = document.createTextNode(division.teams[i].name);
     var newEleTd = document.createElement('td');
-    var newEleA = document.createElement('a');
     tr.appendChild(newEleTd);
-    newEleA.appendChild(newNode);
-    newEleTd.appendChild(newEleA);
-    newEleA.setAttribute('data-team', division.teams[i].id);
-    newEleA.addEventListener('click', function(e) {
+    newEleTd.appendChild(newNode);
+    tr.addEventListener('click', function(e) {
       listPlayers(e.target.getAttribute('data-team'));
     }, false);
   }
@@ -83,7 +80,7 @@ function listPlayers(teamId) {
     newEle.appendChild(newNode);
     teamProfile.appendChild(newEle);
     var table = document.createElement('table');
-    table.setAttribute('class', 'table');
+    table.setAttribute('class', 'table table-hover');
     teamProfile.appendChild(table);
     var thead = document.createElement('thead');
     createTableData('Status', 'th', thead);
