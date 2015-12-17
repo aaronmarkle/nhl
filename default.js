@@ -115,22 +115,26 @@ function listPlayers(teamId) {
     newEle.setAttribute('class', 'h1');
     newEle.appendChild(newNode);
     teamProfile.appendChild(newEle);
-    /*for (var i=0; i<response.players.length; i++) {
-      var newNode = document.createTextNode(response.players[i].full_name);
-      var newEle = document.createElement('p');
-      newEle.setAttribute('class', 'h4');
-      newEle.appendChild(newNode);
-      teamProfile.appendChild(newEle);
-    }*/
+
     var table = document.createElement('table');
+    table.setAttribute('class', 'table');
     teamProfile.appendChild(table);
+    function createTableData(property) {
+      var node = document.createTextNode(property);
+      var td = document.createElement('td');
+      td.appendChild(node);
+      tr.appendChild(td);
+    }
     for (var i=0; i<response.players.length; i++) {
       var tr = document.createElement('tr');
       table.appendChild(tr);
-      var nameNode = document.createTextNode(response.players[i].full_name);
-      var name = document.createElement('td');
-      name.appendChild(nameNode);
-      tr.appendChild(name);
+      createTableData(response.players[i].status);
+      createTableData(response.players[i].full_name);
+      createTableData(response.players[i].primary_position);
+      createTableData(response.players[i].jersey_number);
+      createTableData(response.players[i].weight);
+      createTableData(response.players[i].height);
+      createTableData(response.players[i].birth_place);
     }
   }
   getTeamProfile.open('GET', 'http://127.0.0.1:8080/teamProfile?teamId=' + teamId, true);
