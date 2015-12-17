@@ -9,10 +9,11 @@ body {
 
 a {
   cursor: pointer;
-  color: black;
+  color: #fff;
 }
 
 a:hover {
+  color: #ddd;
   text-decoration: none;
 }
 
@@ -26,10 +27,11 @@ a:hover {
 }
 
 .division {
-  background-color: #fff;
+  background-color: rgba(0,0,0,.6);
   border-radius: 5px;
   padding: 1px 10px 5px 10px;
   margin: 20px 5px;
+  color: #ccc;
 }
 
 th {
