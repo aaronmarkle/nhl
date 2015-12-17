@@ -7,9 +7,9 @@ var teamProfile = require('./teamProfile.js');
 
 //app.use('/rankings', rankings);
 
-//app.use('/standings', standings);
+app.use('/standings', standings);
 
-//app.use('/teamProfile', teamProfile);
+app.use('/teamProfile', teamProfile);
 
 app.get('/', function(req, res) {
   res.sendFile(__dirname + '/index.html');
@@ -29,7 +29,7 @@ app.get('/rankings', function(req, res) {
   });
 });
 
-app.get('/standings', function(req, res) {
+/*app.get('/standings', function(req, res) {
   fs.readFile('standingsSample.json', 'utf8', function(err, data) {
     res.send(data);
   });
@@ -39,7 +39,7 @@ app.get('/teamProfile', function(req, res) {
   fs.readFile('teamProfileSample.json', 'utf8', function(err, data) {
     res.send(data);
   });
-});
+});*/
 
 app.listen(8080);
 console.log('Server is live on port 8080.');

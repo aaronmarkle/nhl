@@ -1,42 +1,32 @@
 var getRankings = new XMLHttpRequest();
 getRankings.onload = function() {
-  response = JSON.parse(getRankings.responseText);
-  //pacific
-  var pacific = response.conferences[1].divisions[1];
-  listTeams(pacific);
-  //central
-  var central = response.conferences[1].divisions[0];
-  listTeams(central);
-  //atlantic
-  var atlantic = response.conferences[0].divisions[0];
-  listTeams(atlantic);
-  //metropolitan
-  var metropolitan = response.conferences[0].divisions[1];
-  listTeams(metropolitan);
-
-  getStandings.send();
+  rankingsResponse = JSON.parse(getRankings.responseText);
 };
 getRankings.open('GET', 'http://127.0.0.1:8080/rankings', true);
 getRankings.send();
 
 var getStandings = new XMLHttpRequest();
 getStandings.onload = function() {
-  response = JSON.parse(getStandings.responseText);
-  console.log(response);
+  standingsResponse = JSON.parse(getStandings.responseText);
   //pacific
-  var pacific = response.conferences[1].divisions[1];
+  var pacific = standingsResponse.conferences[1].divisions[1];
+  listTeams(pacific);
   listStandings(pacific);
   //central
-  var central = response.conferences[1].divisions[0];
+  var central = standingsResponse.conferences[1].divisions[0];
+  listTeams(central);
   listStandings(central);
   //atlantic
-  var atlantic = response.conferences[0].divisions[0];
+  var atlantic = standingsResponse.conferences[0].divisions[0];
+  listTeams(atlantic);
   listStandings(atlantic);
   //metropolitan
-  var metropolitan = response.conferences[0].divisions[1];
+  var metropolitan = standingsResponse.conferences[0].divisions[1];
+  listTeams(metropolitan);
   listStandings(metropolitan);
 }
 getStandings.open('GET', 'http://127.0.0.1:8080/standings', true);
+getStandings.send();
 
 function listTeams(division) {
   //create rankings table and table-header
