@@ -31,7 +31,7 @@ getStandings.send();
 function listTeams(division) {
   //create rankings table and table-header
   var table = document.createElement('table');
-  table.setAttribute('class', 'table table-striped');
+  table.setAttribute('class', 'table');
   var thead = document.createElement('thead');
   var theadrow = document.createElement('tr');
   var thName = document.createElement('th');

@@ -16,6 +16,15 @@ a:hover {
   text-decoration: none;
 }
 
+#background {
+  background-image: url('hockeybg.jpg');
+  background-size: cover;
+}
+
+#rankings {
+
+}
+
 .division {
   background-color: #fff;
   border-radius: 5px;
