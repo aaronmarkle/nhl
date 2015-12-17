@@ -54,8 +54,10 @@ td {
 #teamProfile {
   margin-top: 30px;
   margin-bottom: 30px;
-  background-color: #fff;
+  background-color: #fefefe;
   box-shadow: 5px 5px 5px #333;
+  border-radius: 5px;
+  border: 1px solid #333;
 }
 
 .table-hover > tbody > tr:hover {
