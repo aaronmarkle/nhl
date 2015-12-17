@@ -102,6 +102,8 @@ function listStandings(division) {
   }
 }
 
+
+
 function listPlayers(teamId) {
   var teamProfile = document.getElementById('teamProfile');
   while (teamProfile.firstChild) {
@@ -115,19 +117,57 @@ function listPlayers(teamId) {
     newEle.setAttribute('class', 'h1');
     newEle.appendChild(newNode);
     teamProfile.appendChild(newEle);
-
+    function createTableData(property) {
+      var anode = document.createTextNode(property);
+      var atd = document.createElement('td');
+      atd.appendChild(anode);
+      tr.appendChild(atd);
+    }
     var table = document.createElement('table');
     table.setAttribute('class', 'table');
     teamProfile.appendChild(table);
-    function createTableData(property) {
-      var node = document.createTextNode(property);
-      var td = document.createElement('td');
-      td.appendChild(node);
-      tr.appendChild(td);
-    }
+
+    var thead = document.createElement('thead');
+    var theadrow = document.createElement('tr');
+
+    var thName = document.createElement('th');
+    var thNode = document.createTextNode('Status');
+    thName.appendChild(thNode);
+    thead.appendChild(thName);
+    var thWins = document.createElement('th');
+    var winsNode = document.createTextNode('Player');
+    thWins.appendChild(winsNode);
+    thead.appendChild(thWins);
+    var thLosses = document.createElement('th');
+    var lossesNode = document.createTextNode('Position');
+    thLosses.appendChild(lossesNode);
+    thead.appendChild(thLosses);
+    var thOtl = document.createElement('th');
+    var otlNode = document.createTextNode('Number');
+    thOtl.appendChild(otlNode);
+    thead.appendChild(thOtl);
+    var thTotal = document.createElement('th');
+    var totalNode = document.createTextNode('Weight');
+    thTotal.appendChild(totalNode);
+    thead.appendChild(thTotal);
+    var thTotal = document.createElement('th');
+    var totalNode = document.createTextNode('Height');
+    thTotal.appendChild(totalNode);
+    thead.appendChild(thTotal);
+    var thTotal = document.createElement('th');
+    var totalNode = document.createTextNode('Birthplace');
+    thTotal.appendChild(totalNode);
+    thead.appendChild(thTotal);
+
+    table.appendChild(thead);
+    var tbody = document.createElement('tbody');
+    table.appendChild(tbody);
+
+
+
     for (var i=0; i<response.players.length; i++) {
       var tr = document.createElement('tr');
-      table.appendChild(tr);
+      tbody.appendChild(tr);
       createTableData(response.players[i].status);
       createTableData(response.players[i].full_name);
       createTableData(response.players[i].primary_position);
