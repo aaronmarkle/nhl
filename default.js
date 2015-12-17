@@ -34,26 +34,11 @@ function listTeams(division) {
   table.setAttribute('class', 'table');
   var thead = document.createElement('thead');
   var theadrow = document.createElement('tr');
-  var thName = document.createElement('th');
-  var thNode = document.createTextNode('Team');
-  thName.appendChild(thNode);
-  thead.appendChild(thName);
-  var thWins = document.createElement('th');
-  var winsNode = document.createTextNode('W');
-  thWins.appendChild(winsNode);
-  thead.appendChild(thWins);
-  var thLosses = document.createElement('th');
-  var lossesNode = document.createTextNode('L');
-  thLosses.appendChild(lossesNode);
-  thead.appendChild(thLosses);
-  var thOtl = document.createElement('th');
-  var otlNode = document.createTextNode('OT');
-  thOtl.appendChild(otlNode);
-  thead.appendChild(thOtl);
-  var thTotal = document.createElement('th');
-  var totalNode = document.createTextNode('Total');
-  thTotal.appendChild(totalNode);
-  thead.appendChild(thTotal);
+  createTableData('Team', 'th', thead)
+  createTableData('W', 'th', thead)
+  createTableData('L', 'th', thead)
+  createTableData('OT', 'th', thead)
+  createTableData('Total', 'th', thead)
   table.appendChild(thead);
   var tbody = document.createElement('tbody');
   table.appendChild(tbody);
@@ -75,30 +60,13 @@ function listTeams(division) {
     }, false);
   }
 }
-
 function listStandings(division) {
   for (var i=0; i<division.teams.length; i++) {
     var teamRow = document.getElementById(division.teams[i].id)
-
-    var winsNode = document.createTextNode(division.teams[i].wins);
-    var winsTd = document.createElement('td');
-    winsTd.appendChild(winsNode);
-    teamRow.appendChild(winsTd);
-
-    var lossesNode = document.createTextNode(division.teams[i].losses);
-    var lossesTd = document.createElement('td');
-    lossesTd.appendChild(lossesNode);
-    teamRow.appendChild(lossesTd);
-
-    var otLossesNode = document.createTextNode(division.teams[i].overtime_losses);
-    var otLossesTd = document.createElement('td');
-    otLossesTd.appendChild(otLossesNode);
-    teamRow.appendChild(otLossesTd);
-
-    var pointsNode = document.createTextNode(division.teams[i].points);
-    var pointsTd = document.createElement('td');
-    pointsTd.appendChild(pointsNode);
-    teamRow.appendChild(pointsTd);
+    createTableData(division.teams[i].wins, 'td', teamRow);
+    createTableData(division.teams[i].losses, 'td', teamRow);
+    createTableData(division.teams[i].overtime_losses, 'td', teamRow);
+    createTableData(division.teams[i].points, 'td', teamRow);
   }
 }
 function listPlayers(teamId) {
@@ -114,12 +82,6 @@ function listPlayers(teamId) {
     newEle.setAttribute('class', 'h2');
     newEle.appendChild(newNode);
     teamProfile.appendChild(newEle);
-    function createTableData(property, element, parent) {
-      var node = document.createTextNode(property);
-      var td = document.createElement(element);
-      td.appendChild(node);
-      parent.appendChild(td);
-    }
     var table = document.createElement('table');
     table.setAttribute('class', 'table');
     teamProfile.appendChild(table);
@@ -148,4 +110,10 @@ function listPlayers(teamId) {
   }
   getTeamProfile.open('GET', 'http://127.0.0.1:8080/teamProfile?teamId=' + teamId, true);
   getTeamProfile.send();
+}
+function createTableData(property, element, parent) {
+  var node = document.createTextNode(property);
+  var td = document.createElement(element);
+  td.appendChild(node);
+  parent.appendChild(td);
 }
