@@ -117,11 +117,11 @@ function listPlayers(teamId) {
     newEle.setAttribute('class', 'h1');
     newEle.appendChild(newNode);
     teamProfile.appendChild(newEle);
-    function createTableData(property) {
-      var anode = document.createTextNode(property);
-      var atd = document.createElement('td');
-      atd.appendChild(anode);
-      tr.appendChild(atd);
+    function createTableData(property, element) {
+      var node = document.createTextNode(property);
+      var td = document.createElement(element);
+      td.appendChild(node);
+      tr.appendChild(td);
     }
     var table = document.createElement('table');
     table.setAttribute('class', 'table');
@@ -130,6 +130,7 @@ function listPlayers(teamId) {
     var thead = document.createElement('thead');
     var theadrow = document.createElement('tr');
 
+    
     var thName = document.createElement('th');
     var thNode = document.createTextNode('Status');
     thName.appendChild(thNode);
@@ -168,13 +169,13 @@ function listPlayers(teamId) {
     for (var i=0; i<response.players.length; i++) {
       var tr = document.createElement('tr');
       tbody.appendChild(tr);
-      createTableData(response.players[i].status);
-      createTableData(response.players[i].full_name);
-      createTableData(response.players[i].primary_position);
-      createTableData(response.players[i].jersey_number);
-      createTableData(response.players[i].weight);
-      createTableData(response.players[i].height);
-      createTableData(response.players[i].birth_place);
+      createTableData(response.players[i].status, 'td');
+      createTableData(response.players[i].full_name, 'td');
+      createTableData(response.players[i].primary_position, 'td');
+      createTableData(response.players[i].jersey_number, 'td');
+      createTableData(response.players[i].weight, 'td');
+      createTableData(response.players[i].height, 'td');
+      createTableData(response.players[i].birth_place, 'td');
     }
   }
   getTeamProfile.open('GET', 'http://127.0.0.1:8080/teamProfile?teamId=' + teamId, true);
