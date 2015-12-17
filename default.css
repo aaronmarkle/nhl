@@ -23,7 +23,6 @@ tr:hover {
   padding: 1px 10px 5px 10px;
   margin: 20px 5px;
   color: #111;
-  border: 1px solid #333;
 }
 
 th {
@@ -31,6 +30,14 @@ th {
 }
 
 .h1 {
+  color: #fff;
+}
+
+.h2 {
+  color: #111;
+}
+
+.h3 {
   color: #fff;
 }
 
@@ -47,4 +54,11 @@ td {
 #teamProfile {
   margin-top: 30px;
   margin-bottom: 30px;
+  background-color: #fff;
+  box-shadow: 5px 5px 5px #333;
+}
+
+.table-hover > tbody > tr:hover {
+  background-color: #999;
+  color: #fff;
 }
