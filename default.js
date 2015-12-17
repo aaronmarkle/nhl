@@ -53,8 +53,8 @@ function listTeams(division) {
     tr.appendChild(newEleTd);
     newEleTd.appendChild(newNode);
     tr.addEventListener('click', function(e) {
-      listPlayers(e.target.getAttribute('data-team'));
-    }, false);
+      listPlayers(e.target.parentElement.getAttribute('id'));
+    }, true);
   }
 }
 function listStandings(division) {
