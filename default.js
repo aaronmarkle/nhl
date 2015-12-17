@@ -111,7 +111,7 @@ function listPlayers(teamId) {
     response = JSON.parse(getTeamProfile.responseText);
     var newNode = document.createTextNode(response.market + ' ' + response.name);
     var newEle = document.createElement('p');
-    newEle.setAttribute('class', 'h1');
+    newEle.setAttribute('class', 'h2');
     newEle.appendChild(newNode);
     teamProfile.appendChild(newEle);
     function createTableData(property, element, parent) {
