@@ -121,7 +121,9 @@ function listPlayerProfile(playerId) {
   var getPlayerProfile = new XMLHttpRequest();
   getPlayerProfile.onload = function() {
     response = JSON.parse(getPlayerProfile.responseText);
-    console.log(response);
+    var table = document.createElement('table');
+    table.setAttribute('class', 'table');
+    playerProfile.appendChild(table);
   }
   getPlayerProfile.open('GET', 'http://127.0.0.1:8080/playerProfile?playerId=' + playerId, true);
   getPlayerProfile.send();
