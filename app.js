@@ -52,5 +52,11 @@ app.get('/playerProfile', function(req, res) {
   });
 });
 
+app.get('/leagueLeaders', function(req, res) {
+  fs.readFile('leagueLeadersSample.json', 'utf8', function(err, data) {
+    res.send(data);
+  });
+});
+
 app.listen(8080);
 console.log('Server is live on port 8080.');

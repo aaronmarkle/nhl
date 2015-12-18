@@ -2,6 +2,10 @@ html {
   height: 100%;
 }
 
+html:hover {
+  cursor: default;
+}
+
 body {
   background: linear-gradient(#111, #fff);
   background-repeat: no-repeat;
@@ -20,7 +24,7 @@ tr:hover {
 .division {
   background-color: rgba(255,255,255,.5);
   border-radius: 5px;
-  padding: 1px 10px 5px 10px;
+  padding: 1px 10px 0 10px;
   margin: 10px 0;
   color: #111;
 }
@@ -75,8 +79,16 @@ td {
   background-color: transparent;
   color: #fff;
   text-shadow:
-    -1px -1px 1px #000,
-    1px -1px 1px #000,
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
     -1px 1px 1px #000,
     1px 1px 1px #000;  
+}
+
+#leaders {
+  background-color: #fff;
+}
+
+#leaders p {
+  margin-bottom: 1px;
 }

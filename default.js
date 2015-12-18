@@ -135,6 +135,21 @@ function listPlayerProfile(playerId) {
   getPlayerProfile.send();
 }
 
+listLeagueLeaders();
+function listLeagueLeaders() {
+  var leaders = document.getElementById('leaders');
+  var getLeagueLeaders = new XMLHttpRequest();
+  getLeagueLeaders.onload = function() {
+    response = JSON.parse(getLeagueLeaders.responseText);
+    for (i=0; i<10; i++) {
+      createTableData(response.categories[1].ranks[i].player.full_name + ' ' + response.categories[1].ranks[i].score, 'p', leaders);
+
+    }
+  }
+  getLeagueLeaders.open('GET', 'http://127.0.0.1:8080/leagueLeaders', true);
+  getLeagueLeaders.send();
+}
+
 function createTableData(property, element, parent) {
   var node = document.createTextNode(property);
   var td = document.createElement(element);
