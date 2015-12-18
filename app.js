@@ -14,6 +14,8 @@ app.use('/teamProfile', teamProfile);
 
 app.use('/playerProfile', playerProfile);*/
 
+app.use('/images', express.static(__dirname + '/images'));
+
 app.get('/', function(req, res) {
   res.sendFile(__dirname + '/index.html');
 });

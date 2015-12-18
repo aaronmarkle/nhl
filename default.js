@@ -52,6 +52,10 @@ function listTeams(division) {
     var newNode = document.createTextNode(division.teams[i].name);
     var newEleTd = document.createElement('td');
     tr.appendChild(newEleTd);
+    var newImg = document.createElement('img');
+    newImg.setAttribute('src', '/images/' + division.teams[i].name.toLowerCase().replace(/\s+/g, '') + '-logo.png');
+    newImg.setAttribute('class', 'logo');
+    newEleTd.appendChild(newImg);
     newEleTd.appendChild(newNode);
     tr.addEventListener('click', function(e) {
       listPlayers(e.target.parentElement.getAttribute('id'));
