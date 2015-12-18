@@ -34,7 +34,7 @@ function listTeams(division) {
   table.setAttribute('class', 'table table-hover');
   var thead = document.createElement('thead');
   var theadrow = document.createElement('tr');
-  createTableData('Team', 'th', thead);
+  createTableData(division.name, 'th', thead);
   createTableData('GP', 'th', thead);
   createTableData('W', 'th', thead);
   createTableData('L', 'th', thead);
