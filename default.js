@@ -34,11 +34,12 @@ function listTeams(division) {
   table.setAttribute('class', 'table table-hover');
   var thead = document.createElement('thead');
   var theadrow = document.createElement('tr');
-  createTableData('Team', 'th', thead)
-  createTableData('W', 'th', thead)
-  createTableData('L', 'th', thead)
-  createTableData('OT', 'th', thead)
-  createTableData('Total', 'th', thead)
+  createTableData('Team', 'th', thead);
+  createTableData('GP', 'th', thead);
+  createTableData('W', 'th', thead);
+  createTableData('L', 'th', thead);
+  createTableData('OT', 'th', thead);
+  createTableData('Total', 'th', thead);
   table.appendChild(thead);
   var tbody = document.createElement('tbody');
   table.appendChild(tbody);
@@ -60,6 +61,7 @@ function listTeams(division) {
 function listStandings(division) {
   for (var i=0; i<division.teams.length; i++) {
     var teamRow = document.getElementById(division.teams[i].id)
+    createTableData(division.teams[i].games_played, 'td', teamRow);
     createTableData(division.teams[i].wins, 'td', teamRow);
     createTableData(division.teams[i].losses, 'td', teamRow);
     createTableData(division.teams[i].overtime_losses, 'td', teamRow);
