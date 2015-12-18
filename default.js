@@ -105,13 +105,28 @@ function listPlayers(teamId) {
       createTableData(response.players[i].height, 'td', tr);
       createTableData(response.players[i].birth_place, 'td', tr);
       tr.addEventListener('click', function(e) {
-        console.log(e.target.parentElement.getAttribute('id'));
+        listPlayerProfile(e.target.parentElement.getAttribute('id'));
       }, true);
     }
   }
   getTeamProfile.open('GET', 'http://127.0.0.1:8080/teamProfile?teamId=' + teamId, true);
   getTeamProfile.send();
 }
+
+function listPlayerProfile(playerId) {
+  var playerProfile = document.getElementById('playerProfile');
+  while (playerProfile.firstChild) {
+    playerProfile.removeChild(playerProfile.firstChild);
+  }
+  var getPlayerProfile = new XMLHttpRequest();
+  getPlayerProfile.onload = function() {
+    response = JSON.parse(getPlayerProfile.responseText);
+    console.log(response);
+  }
+  getPlayerProfile.open('GET', 'http://127.0.0.1:8080/playerProfile?playerId=' + playerId, true);
+  getPlayerProfile.send();
+}
+
 function createTableData(property, element, parent) {
   var node = document.createTextNode(property);
   var td = document.createElement(element);

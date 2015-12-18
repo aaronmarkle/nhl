@@ -4,12 +4,15 @@ var fs = require('fs');
 var rankings = require('./rankings.js');
 var standings = require('./standings.js');
 var teamProfile = require('./teamProfile.js');
+var playerProfile = require('./playerProfile.js');
 
-//app.use('/rankings', rankings);
+/*app.use('/rankings', rankings);
 
-//app.use('/standings', standings);
+app.use('/standings', standings);
 
-//app.use('/teamProfile', teamProfile);
+app.use('/teamProfile', teamProfile);
+
+app.use('/playerProfile', playerProfile);*/
 
 app.get('/', function(req, res) {
   res.sendFile(__dirname + '/index.html');
@@ -41,6 +44,12 @@ app.get('/standings', function(req, res) {
 
 app.get('/teamProfile', function(req, res) {
   fs.readFile('teamProfileSample.json', 'utf8', function(err, data) {
+    res.send(data);
+  });
+});
+
+app.get('/playerProfile', function(req, res) {
+  fs.readFile('playerProfileSample.json', 'utf8', function(err, data) {
     res.send(data);
   });
 });
