@@ -28,10 +28,6 @@ app.get('/default.css', function(req, res) {
   res.sendFile(__dirname + '/default.css');
 });
 
-app.get('/hockeybg.png', function(req, res) {
-  res.sendFile(__dirname + '/hockeybg.png');
-});
-
 app.get('/rankings', function(req, res) {
   fs.readFile('rankingsSample.json', 'utf8', function(err, data) {
     res.send(data);

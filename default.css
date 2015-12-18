@@ -12,7 +12,7 @@ tr:hover {
 }
 
 #background {
-  background-image: url('hockeybg.png');
+  background-image: url('/images/hockeybg.png');
   background-size: cover;
   border-bottom: 1px solid #fff;
 }
