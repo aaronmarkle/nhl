@@ -1,32 +1,43 @@
 var getRankings = new XMLHttpRequest();
 getRankings.onload = function() {
   rankingsResponse = JSON.parse(getRankings.responseText);
+  //pacific
+  var pacific = rankingsResponse.conferences[1].divisions[1];
+  listTeams(pacific);
+  //central
+  var central = rankingsResponse.conferences[1].divisions[0];
+  listTeams(central);
+  //atlantic
+  var atlantic = rankingsResponse.conferences[0].divisions[0];
+  listTeams(atlantic);
+  //metropolitan
+  var metropolitan = rankingsResponse.conferences[0].divisions[1];
+  listTeams(metropolitan);
+  setTimeout(standingsCall, 1100);
 };
 getRankings.open('GET', 'http://127.0.0.1:8080/rankings', true);
 getRankings.send();
 
-var getStandings = new XMLHttpRequest();
-getStandings.onload = function() {
-  standingsResponse = JSON.parse(getStandings.responseText);
-  //pacific
-  var pacific = standingsResponse.conferences[1].divisions[1];
-  listTeams(pacific);
-  listStandings(pacific);
-  //central
-  var central = standingsResponse.conferences[1].divisions[0];
-  listTeams(central);
-  listStandings(central);
-  //atlantic
-  var atlantic = standingsResponse.conferences[0].divisions[0];
-  listTeams(atlantic);
-  listStandings(atlantic);
-  //metropolitan
-  var metropolitan = standingsResponse.conferences[0].divisions[1];
-  listTeams(metropolitan);
-  listStandings(metropolitan);
+function standingsCall() {
+  var getStandings = new XMLHttpRequest();
+  getStandings.onload = function() {
+    standingsResponse = JSON.parse(getStandings.responseText);
+    //pacific
+    var pacific = standingsResponse.conferences[1].divisions[1];
+    listStandings(pacific);
+    //central
+    var central = standingsResponse.conferences[1].divisions[0];
+    listStandings(central);
+    //atlantic
+    var atlantic = standingsResponse.conferences[0].divisions[0];
+    listStandings(atlantic);
+    //metropolitan
+    var metropolitan = standingsResponse.conferences[0].divisions[1];
+    listStandings(metropolitan);
+  }
+  getStandings.open('GET', 'http://127.0.0.1:8080/standings', true);
+  getStandings.send();
 }
-getStandings.open('GET', 'http://127.0.0.1:8080/standings', true);
-getStandings.send();
 
 function listTeams(division) {
   //create rankings table and table-header
@@ -134,7 +145,7 @@ function listPlayerProfile(playerId) {
   getPlayerProfile.open('GET', 'http://127.0.0.1:8080/playerProfile?playerId=' + playerId, true);
   getPlayerProfile.send();
 }
-
+/*
 listLeagueLeaders();
 function listLeagueLeaders() {
   var leaders = document.getElementById('leaders');
@@ -149,7 +160,7 @@ function listLeagueLeaders() {
   getLeagueLeaders.open('GET', 'http://127.0.0.1:8080/leagueLeaders', true);
   getLeagueLeaders.send();
 }
-
+*/
 function createTableData(property, element, parent) {
   var node = document.createTextNode(property);
   var td = document.createElement(element);
