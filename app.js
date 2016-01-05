@@ -5,14 +5,17 @@ var rankings = require('./rankings.js');
 var standings = require('./standings.js');
 var teamProfile = require('./teamProfile.js');
 var playerProfile = require('./playerProfile.js');
+var leagueLeaders = require('./leagueLeaders.js');
 
-app.use('/rankings', rankings);
+/*app.use('/rankings', rankings);
 
 app.use('/standings', standings);
 
 app.use('/teamProfile', teamProfile);
 
 app.use('/playerProfile', playerProfile);
+
+app.use('/leagueLeaders', leagueLeaders);*/
 
 app.use('/images', express.static(__dirname + '/images'));
 
@@ -28,7 +31,7 @@ app.get('/default.css', function(req, res) {
   res.sendFile(__dirname + '/default.css');
 });
 
-/*app.get('/rankings', function(req, res) {
+app.get('/rankings', function(req, res) {
   fs.readFile('rankingsSample.json', 'utf8', function(err, data) {
     res.send(data);
   });
@@ -56,7 +59,7 @@ app.get('/leagueLeaders', function(req, res) {
   fs.readFile('leagueLeadersSample.json', 'utf8', function(err, data) {
     res.send(data);
   });
-});*/
+});
 
 app.listen(8080);
 console.log('Server is live on port 8080.');

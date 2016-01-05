@@ -92,3 +92,7 @@ td {
 #leaders p {
   margin-bottom: 1px;
 }
+
+.leadersImg {
+  min-width: 200px;
+}

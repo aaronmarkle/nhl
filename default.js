@@ -34,6 +34,7 @@ function standingsCall() {
     //metropolitan
     var metropolitan = standingsResponse.conferences[0].divisions[1];
     listStandings(metropolitan);
+    setTimeout(listLeagueLeaders, 1100);
   }
   getStandings.open('GET', 'http://127.0.0.1:8080/standings', true);
   getStandings.send();
@@ -146,20 +147,30 @@ function listPlayerProfile(playerId) {
   getPlayerProfile.send();
 }
 
-/*listLeagueLeaders();
 function listLeagueLeaders() {
-  var leaders = document.getElementById('leaders');
+  var goals = document.getElementById('goals');
+  var assists = document.getElementById('assists');
   var getLeagueLeaders = new XMLHttpRequest();
   getLeagueLeaders.onload = function() {
     response = JSON.parse(getLeagueLeaders.responseText);
+    var newImg = document.createElement('img');
+    newImg.setAttribute('src', '/images/' + response.categories[1].ranks[0].teams[0].name.toLowerCase().replace(/\s+/g, '') + '-logo.png');
+    newImg.setAttribute('class', 'leadersImg');
+    goals.appendChild(newImg);
     for (i=0; i<10; i++) {
-      createTableData(response.categories[1].ranks[i].player.full_name + ' ' + response.categories[1].ranks[i].score, 'p', leaders);
-
+      createTableData(response.categories[1].ranks[i].player.full_name + ' ' + response.categories[1].ranks[i].score, 'p', goals);
+    }
+    var newImg = document.createElement('img');
+    newImg.setAttribute('src', '/images/' + response.categories[2].ranks[0].teams[0].name.toLowerCase().replace(/\s+/g, '') + '-logo.png');
+    newImg.setAttribute('class', 'leadersImg');
+    assists.appendChild(newImg);
+    for (i=0; i<10; i++) {
+      createTableData(response.categories[2].ranks[i].player.full_name + ' ' + response.categories[2].ranks[i].score, 'p', assists);
     }
   }
   getLeagueLeaders.open('GET', 'http://127.0.0.1:8080/leagueLeaders', true);
   getLeagueLeaders.send();
-}*/
+}
 
 function createTableData(property, element, parent) {
   var node = document.createTextNode(property);
