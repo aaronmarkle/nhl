@@ -148,24 +148,30 @@ function listPlayerProfile(playerId) {
 }
 
 function listLeagueLeaders() {
+  var goalsImg = document.getElementById('goals-img');
   var goals = document.getElementById('goals');
+  var assistsImg = document.getElementById('assists-img');
   var assists = document.getElementById('assists');
   var getLeagueLeaders = new XMLHttpRequest();
   getLeagueLeaders.onload = function() {
     response = JSON.parse(getLeagueLeaders.responseText);
     var newImg = document.createElement('img');
     newImg.setAttribute('src', '/images/' + response.categories[1].ranks[0].teams[0].name.toLowerCase().replace(/\s+/g, '') + '-logo.png');
-    newImg.setAttribute('class', 'leadersImg');
-    goals.appendChild(newImg);
+    newImg.setAttribute('class', 'leadersImg center-block');
+    newImg.setAttribute('id', 'goals-leader-img');
+    goalsImg.appendChild(newImg);
     for (i=0; i<10; i++) {
-      createTableData(response.categories[1].ranks[i].player.full_name + ' ' + response.categories[1].ranks[i].score, 'p', goals);
+      createTableDataWithListener(response.categories[1].ranks[i].player.full_name + ' ' + response.categories[1].ranks[i].score, 'p', goals, 'goals');
+      goals.lastChild.setAttribute('data-team', response.categories[1].ranks[i].teams[0].name.toLowerCase().replace(/\s+/g, ''));
     }
     var newImg = document.createElement('img');
     newImg.setAttribute('src', '/images/' + response.categories[2].ranks[0].teams[0].name.toLowerCase().replace(/\s+/g, '') + '-logo.png');
-    newImg.setAttribute('class', 'leadersImg');
-    assists.appendChild(newImg);
+    newImg.setAttribute('class', 'leadersImg center-block');
+    newImg.setAttribute('id', 'assists-leader-img');
+    assistsImg.appendChild(newImg);
     for (i=0; i<10; i++) {
-      createTableData(response.categories[2].ranks[i].player.full_name + ' ' + response.categories[2].ranks[i].score, 'p', assists);
+      createTableDataWithListener(response.categories[2].ranks[i].player.full_name + ' ' + response.categories[2].ranks[i].score, 'p', assists, 'assists');
+      assists.lastChild.setAttribute('data-team', response.categories[2].ranks[i].teams[0].name.toLowerCase().replace(/\s+/g, ''));
     }
   }
   getLeagueLeaders.open('GET', 'http://127.0.0.1:8080/leagueLeaders', true);
@@ -177,4 +183,16 @@ function createTableData(property, element, parent) {
   var td = document.createElement(element);
   td.appendChild(node);
   parent.appendChild(td);
+}
+
+function createTableDataWithListener(property, element, parent, leaderType) {
+  var node = document.createTextNode(property);
+  var td = document.createElement(element);
+  td.appendChild(node);
+  parent.appendChild(td);
+  td.addEventListener('mouseover', function(e) {
+    //listPlayers(e.target.parentElement.getAttribute('id'));
+    console.log(e.target.getAttribute('data-team') + ' hovered');
+    document.getElementById(leaderType + '-leader-img').setAttribute('src', '/images/' + e.target.getAttribute('data-team') + '-logo.png');
+  }, true);
 }
