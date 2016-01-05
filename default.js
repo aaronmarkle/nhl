@@ -145,8 +145,8 @@ function listPlayerProfile(playerId) {
   getPlayerProfile.open('GET', 'http://127.0.0.1:8080/playerProfile?playerId=' + playerId, true);
   getPlayerProfile.send();
 }
-/*
-listLeagueLeaders();
+
+/*listLeagueLeaders();
 function listLeagueLeaders() {
   var leaders = document.getElementById('leaders');
   var getLeagueLeaders = new XMLHttpRequest();
@@ -159,8 +159,8 @@ function listLeagueLeaders() {
   }
   getLeagueLeaders.open('GET', 'http://127.0.0.1:8080/leagueLeaders', true);
   getLeagueLeaders.send();
-}
-*/
+}*/
+
 function createTableData(property, element, parent) {
   var node = document.createTextNode(property);
   var td = document.createElement(element);

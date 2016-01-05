@@ -7,8 +7,7 @@ playerProfile.use('/', function(req, res) {
   request('https://api.sportradar.us/nhl-t3/players/' + keyword + '/profile.json?api_key=6e3p8andmqyfxaqh8hqy59q2', function (error, response, body) {
     if (!error && response.statusCode == 200) {
       var playerProfile = JSON.parse(body);
-      playerProfile = JSON.stringify(playerProfile);
-      res.send(playerProfile);
+      res.json(playerProfile);
     }
   });
 });
