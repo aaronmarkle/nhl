@@ -152,6 +152,8 @@ function listLeagueLeaders() {
   var goals = document.getElementById('goals');
   var assistsImg = document.getElementById('assists-img');
   var assists = document.getElementById('assists');
+  var pointsImg = document.getElementById('points-img');
+  var points = document.getElementById('points');
   var getLeagueLeaders = new XMLHttpRequest();
   getLeagueLeaders.onload = function() {
     response = JSON.parse(getLeagueLeaders.responseText);
@@ -172,6 +174,15 @@ function listLeagueLeaders() {
     for (i=0; i<10; i++) {
       createTableDataWithListener(response.categories[2].ranks[i].player.full_name + ' ' + response.categories[2].ranks[i].score, 'p', assists, 'assists');
       assists.lastChild.setAttribute('data-team', response.categories[2].ranks[i].teams[0].name.toLowerCase().replace(/\s+/g, ''));
+    }
+    var newImg = document.createElement('img');
+    newImg.setAttribute('src', '/images/' + response.categories[4].ranks[0].teams[0].name.toLowerCase().replace(/\s+/g, '') + '-logo.png');
+    newImg.setAttribute('class', 'leadersImg center-block');
+    newImg.setAttribute('id', 'points-leader-img');
+    pointsImg.appendChild(newImg);
+    for (i=0; i<10; i++) {
+      createTableDataWithListener(response.categories[4].ranks[i].player.full_name + ' ' + response.categories[4].ranks[i].score, 'p', points, 'points');
+      points.lastChild.setAttribute('data-team', response.categories[4].ranks[i].teams[0].name.toLowerCase().replace(/\s+/g, ''));
     }
   }
   getLeagueLeaders.open('GET', 'http://127.0.0.1:8080/leagueLeaders', true);
