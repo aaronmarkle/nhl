@@ -7,7 +7,10 @@ html:hover {
 }
 
 body {
-  background-image: url('/images/hockeybg.png');
+  background: url('images/hockeybg.png') no-repeat center center fixed;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  -o-background-size: cover;
   background-size: cover;
 }
 
@@ -17,7 +20,6 @@ tr:hover {
 
 #background {
   padding-top: 30px;
-  border-bottom: 1px solid #fff;
 }
 
 .division {
@@ -85,12 +87,20 @@ td {
 }
 
 #leaders {
-  margin-top: 15px;
+  margin-top: 10px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background-color: rgba(0,0,0,.3);
+  text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 1px #000,
+    1px 1px 1px #000; 
 }
 
 #leaders p {
   margin-bottom: 1px;
-  color: #eee;
+  color: #efefef;
 }
 
 .img-responsive {
