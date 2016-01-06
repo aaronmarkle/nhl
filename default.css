@@ -86,7 +86,7 @@ td {
 }
 
 #leaders {
-  background-color: #fff;
+  margin-top: 15px;
 }
 
 #leaders p {
@@ -94,5 +94,13 @@ td {
 }
 
 .leadersImg {
-  min-width: 200px;
+  min-width: 180px;
+}
+
+.leader-title {
+  margin-bottom: 20px !important;
+}
+
+.h5 {
+  margin-top: 0 !important;
 }
