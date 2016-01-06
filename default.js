@@ -185,6 +185,11 @@ function listLeagueLeaders() {
       points.lastChild.setAttribute('data-team', response.categories[4].ranks[i].teams[0].name.toLowerCase().replace(/\s+/g, ''));
     }
   }
+  document.getElementById('spinner').classList.toggle('hidden');
+  var containers = document.getElementsByClassName('container');
+  for (i=0; i<containers.length; i++) {
+    containers[i].classList.toggle('hidden');
+  }
   getLeagueLeaders.open('GET', 'http://127.0.0.1:8080/leagueLeaders', true);
   getLeagueLeaders.send();
 }

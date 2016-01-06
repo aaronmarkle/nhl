@@ -4,11 +4,12 @@
   <title>nhl</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <link rel="stylesheet" href="default.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 </head>
 <body>
-  <p class="h1 text-center">nhl Standings</p>
+  <p class="h1 text-center">nhl Standings <i id="spinner" class="fa fa-spinner fa-spin"></i></p>
   <div id="background" class="container-fluid">
-    <div class="container">
+    <div class="container hidden">
       <div class="row">
         <div class="col-sm-6 col-sm-offset-0 col-xs-10 col-xs-offset-1">
           <div id="Pacific" class="division"></div>
@@ -25,7 +26,7 @@
       </div>
     </div>
   </div>
-  <div class="container">
+  <div class="container hidden">
     <div id="leaders" class="row">
       <div class="col-xs-12 col-md-4">
         <p class="h3 text-center leader-title">Top 10 Goals Scored</p>
@@ -44,12 +45,12 @@
       </div>
     </div>
   </div>
-  <div id="roster" class="container">
+  <div id="roster" class="container hidden">
     <div class="row">
       <div id="teamProfile" class="col-sm-10 col-sm-offset-1"></div>
     </div>
   </div>
-  <div id="player" class="container">
+  <div id="player" class="container hidden">
     <div class="row">
       <div id="playerProfile" class="col-sm-10 col-sm-offset-1"></div>
     </div>
