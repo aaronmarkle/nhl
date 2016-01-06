@@ -7,8 +7,8 @@ html:hover {
 }
 
 body {
-  background: linear-gradient(#111, #fff);
-  background-repeat: no-repeat;
+  background-image: url('/images/hockeybg.png');
+  background-size: cover;
 }
 
 tr:hover {
@@ -16,8 +16,7 @@ tr:hover {
 }
 
 #background {
-  background-image: url('/images/hockeybg.png');
-  background-size: cover;
+  padding-top: 30px;
   border-bottom: 1px solid #fff;
 }
 
@@ -52,7 +51,7 @@ th {
 }
 
 .h3 {
-  color: #111;
+  color: #333;
   margin: 10px 5px 5px 5px;
 }
 
@@ -91,10 +90,12 @@ td {
 
 #leaders p {
   margin-bottom: 1px;
+  color: #eee;
 }
 
-.leadersImg {
-  min-width: 180px;
+.img-responsive {
+  min-width: 220px;
+  max-height: 200px;
 }
 
 .leader-title {
@@ -103,4 +104,9 @@ td {
 
 .h5 {
   margin-top: 0 !important;
+}
+
+#leaders-assists {
+  border-right: 1px solid #fff;
+  border-left: 1px solid #fff;
 }

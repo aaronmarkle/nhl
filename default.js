@@ -126,6 +126,7 @@ function listPlayers(teamId) {
         listPlayerProfile(e.target.parentElement.getAttribute('id'));
       }, true);
     }
+    teamProfile.scrollIntoView();
   }
   getTeamProfile.open('GET', 'http://127.0.0.1:8080/teamProfile?teamId=' + teamId, true);
   getTeamProfile.send();
@@ -158,8 +159,8 @@ function listLeagueLeaders() {
   getLeagueLeaders.onload = function() {
     response = JSON.parse(getLeagueLeaders.responseText);
     var newImg = document.createElement('img');
-    newImg.setAttribute('src', '/images/' + response.categories[1].ranks[0].teams[0].name.toLowerCase().replace(/\s+/g, '') + '-logo.png');
-    newImg.setAttribute('class', 'leadersImg center-block');
+    newImg.setAttribute('src', '/images/' + response.categories[1].ranks[0].teams[0].name.toLowerCase().replace(/\s+/g, '') + '-logo.svg');
+    newImg.setAttribute('class', 'img-responsive center-block');
     newImg.setAttribute('id', 'goals-leader-img');
     goalsImg.appendChild(newImg);
     for (i=0; i<10; i++) {
@@ -167,8 +168,8 @@ function listLeagueLeaders() {
       goals.lastChild.setAttribute('data-team', response.categories[1].ranks[i].teams[0].name.toLowerCase().replace(/\s+/g, ''));
     }
     var newImg = document.createElement('img');
-    newImg.setAttribute('src', '/images/' + response.categories[2].ranks[0].teams[0].name.toLowerCase().replace(/\s+/g, '') + '-logo.png');
-    newImg.setAttribute('class', 'leadersImg center-block');
+    newImg.setAttribute('src', '/images/' + response.categories[2].ranks[0].teams[0].name.toLowerCase().replace(/\s+/g, '') + '-logo.svg');
+    newImg.setAttribute('class', 'img-responsive center-block');
     newImg.setAttribute('id', 'assists-leader-img');
     assistsImg.appendChild(newImg);
     for (i=0; i<10; i++) {
@@ -176,19 +177,19 @@ function listLeagueLeaders() {
       assists.lastChild.setAttribute('data-team', response.categories[2].ranks[i].teams[0].name.toLowerCase().replace(/\s+/g, ''));
     }
     var newImg = document.createElement('img');
-    newImg.setAttribute('src', '/images/' + response.categories[4].ranks[0].teams[0].name.toLowerCase().replace(/\s+/g, '') + '-logo.png');
-    newImg.setAttribute('class', 'leadersImg center-block');
+    newImg.setAttribute('src', '/images/' + response.categories[4].ranks[0].teams[0].name.toLowerCase().replace(/\s+/g, '') + '-logo.svg');
+    newImg.setAttribute('class', 'img-responsive center-block');
     newImg.setAttribute('id', 'points-leader-img');
     pointsImg.appendChild(newImg);
     for (i=0; i<10; i++) {
       createTableDataWithListener(response.categories[4].ranks[i].player.full_name + ' ' + response.categories[4].ranks[i].score, 'p', points, 'points');
       points.lastChild.setAttribute('data-team', response.categories[4].ranks[i].teams[0].name.toLowerCase().replace(/\s+/g, ''));
     }
-  }
   document.getElementById('spinner').classList.toggle('hidden');
   var containers = document.getElementsByClassName('container');
   for (i=0; i<containers.length; i++) {
     containers[i].classList.toggle('hidden');
+  }
   }
   getLeagueLeaders.open('GET', 'http://127.0.0.1:8080/leagueLeaders', true);
   getLeagueLeaders.send();
@@ -209,6 +210,6 @@ function createTableDataWithListener(property, element, parent, leaderType) {
   td.addEventListener('mouseover', function(e) {
     //listPlayers(e.target.parentElement.getAttribute('id'));
     console.log(e.target.getAttribute('data-team') + ' hovered');
-    document.getElementById(leaderType + '-leader-img').setAttribute('src', '/images/' + e.target.getAttribute('data-team') + '-logo.png');
+    document.getElementById(leaderType + '-leader-img').setAttribute('src', '/images/' + e.target.getAttribute('data-team') + '-logo.svg');
   }, true);
 }
