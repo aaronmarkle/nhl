@@ -14,7 +14,7 @@ body {
   background-size: cover;
 }
 
-tr:hover {
+.division > table > tbody > tr:hover {
   cursor: pointer;
 }
 
@@ -23,7 +23,7 @@ tr:hover {
 }
 
 .division {
-  background-color: rgba(255,255,255,.5);
+  background-color: rgba(255,255,255,.4);
   border-radius: 5px;
   padding: 1px 10px 0 10px;
   margin: 10px 0;
@@ -68,12 +68,12 @@ td {
 }
 
 #teamProfile {
+  background-color: rgba(255,255,255,.8);
   margin-top: 30px;
   margin-bottom: 30px;
-  background-color: #fefefe;
   box-shadow: 5px 5px 5px #333;
   border-radius: 5px;
-  border: 1px solid #333;
+  border: 1px solid #333; 
 }
 
 .table-hover > tbody > tr:hover {
@@ -90,12 +90,13 @@ td {
   margin-top: 10px;
   padding-top: 15px;
   padding-bottom: 15px;
-  background-color: rgba(0,0,0,.3);
+  background-color: rgba(0,0,0,.1);
   text-shadow:
     -1px -1px 0 #000,
     1px -1px 0 #000,
     -1px 1px 1px #000,
     1px 1px 1px #000; 
+  border-radius: 5px;
 }
 
 #leaders p {
@@ -119,4 +120,12 @@ td {
 #leaders-assists {
   border-right: 1px solid #fff;
   border-left: 1px solid #fff;
+}
+
+.white-outline {
+  text-shadow:
+    -1px -1px 0 #fff,
+    1px -1px 0 #fff,
+    -1px 1px 1px #fff,
+    1px 1px 1px #fff;
 }

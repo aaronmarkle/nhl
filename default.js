@@ -94,11 +94,12 @@ function listPlayers(teamId) {
     response = JSON.parse(getTeamProfile.responseText);
     var newNode = document.createTextNode(response.market + ' ' + response.name);
     var newEle = document.createElement('p');
-    newEle.setAttribute('class', 'h2');
+    newEle.setAttribute('class', 'h2 white-outline');
     newEle.appendChild(newNode);
     teamProfile.appendChild(newEle);
     var table = document.createElement('table');
-    table.setAttribute('class', 'table table-hover');
+    table.setAttribute('id', 'roster-table');
+    table.setAttribute('class', 'table table-striped');
     teamProfile.appendChild(table);
     var thead = document.createElement('thead');
     createTableData('Status', 'th', thead);
