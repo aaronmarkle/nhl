@@ -168,6 +168,7 @@ function listLeagueLeaders() {
       createTableDataWithListener(response.categories[1].ranks[i].player.full_name + ' ' + response.categories[1].ranks[i].score, 'p', goals, 'goals');
       goals.lastChild.setAttribute('data-team', response.categories[1].ranks[i].teams[0].name.toLowerCase().replace(/\s+/g, ''));
     }
+    goals.firstChild.setAttribute('id', 'goals-highlight');
     var newImg = document.createElement('img');
     newImg.setAttribute('src', '/images/' + response.categories[2].ranks[0].teams[0].name.toLowerCase().replace(/\s+/g, '') + '-logo.svg');
     newImg.setAttribute('class', 'img-fixed');
@@ -177,6 +178,7 @@ function listLeagueLeaders() {
       createTableDataWithListener(response.categories[2].ranks[i].player.full_name + ' ' + response.categories[2].ranks[i].score, 'p', assists, 'assists');
       assists.lastChild.setAttribute('data-team', response.categories[2].ranks[i].teams[0].name.toLowerCase().replace(/\s+/g, ''));
     }
+    assists.firstChild.setAttribute('id', 'assists-highlight');
     var newImg = document.createElement('img');
     newImg.setAttribute('src', '/images/' + response.categories[4].ranks[0].teams[0].name.toLowerCase().replace(/\s+/g, '') + '-logo.svg');
     newImg.setAttribute('class', 'img-fixed');
@@ -186,6 +188,7 @@ function listLeagueLeaders() {
       createTableDataWithListener(response.categories[4].ranks[i].player.full_name + ' ' + response.categories[4].ranks[i].score, 'p', points, 'points');
       points.lastChild.setAttribute('data-team', response.categories[4].ranks[i].teams[0].name.toLowerCase().replace(/\s+/g, ''));
     }
+    points.firstChild.setAttribute('id', 'points-highlight');
   document.getElementById('spinner').classList.toggle('hidden');
   var containers = document.getElementsByClassName('container');
   for (i=0; i<containers.length; i++) {
@@ -209,8 +212,8 @@ function createTableDataWithListener(property, element, parent, leaderType) {
   td.appendChild(node);
   parent.appendChild(td);
   td.addEventListener('mouseover', function(e) {
-    //listPlayers(e.target.parentElement.getAttribute('id'));
-    console.log(e.target.getAttribute('data-team') + ' hovered');
     document.getElementById(leaderType + '-leader-img').setAttribute('src', '/images/' + e.target.getAttribute('data-team') + '-logo.svg');
+    document.getElementById(leaderType + '-highlight').removeAttribute('id');
+    e.target.setAttribute('id', leaderType + '-highlight');
   }, true);
 }

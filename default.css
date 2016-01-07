@@ -96,13 +96,17 @@ td {
   margin-top: 10px;
   padding-top: 15px;
   padding-bottom: 15px;
-  background-color: rgba(0,0,0,.1);
+  background-color: rgba(0,0,0,.2);
   text-shadow:
     -1px -1px 0 #000,
     1px -1px 0 #000,
     -1px 1px 1px #000,
     1px 1px 1px #000; 
   border-radius: 5px;
+}
+
+#goals-highlight, #assists-highlight, #points-highlight{
+  font-weight: bold;
 }
 
 #leaders p {
