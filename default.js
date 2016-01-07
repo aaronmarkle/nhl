@@ -161,7 +161,7 @@ function listLeagueLeaders() {
     response = JSON.parse(getLeagueLeaders.responseText);
     var newImg = document.createElement('img');
     newImg.setAttribute('src', '/images/' + response.categories[1].ranks[0].teams[0].name.toLowerCase().replace(/\s+/g, '') + '-logo.svg');
-    newImg.setAttribute('class', 'img-responsive center-block');
+    newImg.setAttribute('class', 'img-fixed');
     newImg.setAttribute('id', 'goals-leader-img');
     goalsImg.appendChild(newImg);
     for (i=0; i<10; i++) {
@@ -170,7 +170,7 @@ function listLeagueLeaders() {
     }
     var newImg = document.createElement('img');
     newImg.setAttribute('src', '/images/' + response.categories[2].ranks[0].teams[0].name.toLowerCase().replace(/\s+/g, '') + '-logo.svg');
-    newImg.setAttribute('class', 'img-responsive center-block');
+    newImg.setAttribute('class', 'img-fixed');
     newImg.setAttribute('id', 'assists-leader-img');
     assistsImg.appendChild(newImg);
     for (i=0; i<10; i++) {
@@ -179,7 +179,7 @@ function listLeagueLeaders() {
     }
     var newImg = document.createElement('img');
     newImg.setAttribute('src', '/images/' + response.categories[4].ranks[0].teams[0].name.toLowerCase().replace(/\s+/g, '') + '-logo.svg');
-    newImg.setAttribute('class', 'img-responsive center-block');
+    newImg.setAttribute('class', 'img-fixed');
     newImg.setAttribute('id', 'points-leader-img');
     pointsImg.appendChild(newImg);
     for (i=0; i<10; i++) {

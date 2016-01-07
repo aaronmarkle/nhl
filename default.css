@@ -62,6 +62,13 @@ th {
   }
 }
 
+@media (min-width: 1200px) {
+  #leaders-assists {
+    border-right: 1px solid #fff;
+    border-left: 1px solid #fff;
+  }
+}
+
 td {
   border-color: #666 !important;
 }
@@ -103,11 +110,6 @@ td {
   color: #efefef;
 }
 
-.img-responsive {
-  min-width: 220px;
-  max-height: 200px;
-}
-
 .leader-title {
   margin-bottom: 20px !important;
 }
@@ -116,15 +118,15 @@ td {
   margin-top: 0 !important;
 }
 
-#leaders-assists {
-  border-right: 1px solid #fff;
-  border-left: 1px solid #fff;
-}
-
 .white-outline {
   text-shadow:
     -1px -1px 0 #fff,
     1px -1px 0 #fff,
     -1px 1px 1px #fff,
     1px 1px 1px #fff;
+}
+
+.img-fixed {
+  width: 200px !important;
+  max-height: 200px;
 }
