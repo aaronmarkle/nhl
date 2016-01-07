@@ -12,9 +12,8 @@
   },
   "author": "Aaron Markle",
   "dependencies": {
-    "express": "",
-    "request": "",
-    "fs": ""
+    "express": "^4.13.3",
+    "request": "^2.67.0"
   },
   "license": "ISC",
   "bugs": {
