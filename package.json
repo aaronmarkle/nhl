@@ -1,0 +1,24 @@
+{
+  "name": "nhl",
+  "version": "1.0.0",
+  "description": "A place to view nhl standings and statistics.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aaronmarkle/nhl.git"
+  },
+  "author": "Aaron Markle",
+  "dependencies": {
+    "express": "x.x.x",
+    "request": "x.x.x",
+    "fs": "x.x.x"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aaronmarkle/nhl/issues"
+  },
+  "homepage": "https://github.com/aaronmarkle/nhl#readme"
+}
