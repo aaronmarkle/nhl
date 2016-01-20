@@ -1,11 +1,11 @@
 var express = require('express');
 var app = express();
 var fs = require('fs');
-var rankings = require('./rankings.js');
-var standings = require('./standings.js');
-var teamProfile = require('./teamProfile.js');
-var playerProfile = require('./playerProfile.js');
-var leagueLeaders = require('./leagueLeaders.js');
+var rankings = require('./routes/rankings.js');
+var standings = require('./routes/standings.js');
+var teamProfile = require('./routes/teamProfile.js');
+var playerProfile = require('./routes/playerProfile.js');
+var leagueLeaders = require('./routes/leagueLeaders.js');
 
 app.use('/rankings', rankings);
 
