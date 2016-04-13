@@ -1,3 +1,5 @@
+PLACEHOLDER FOR UPDATED README
+
 A website for hockey fans who want to view stats and player scores for NHL games.
 
 ![nhl onDemand](http://s28.postimg.org/ucfkpg1jh/nhl_on_Demand.png)  
